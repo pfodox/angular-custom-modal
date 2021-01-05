@@ -1,0 +1,17 @@
+<app-modal *ngIf="showFirstModal" (close)="closeFirstModal()">
+  <div>
+    <h3>First Modal</h3>
+
+    <button (click)="openSecondModal()">Open Second Modal</button>
+  </div>
+</app-modal>
+
+<app-modal *ngIf="showSecondModal" (close)="closeSecondModal()">
+  <div>
+    <h3>Second Modal</h3>
+  </div>
+</app-modal>
+
+<button (click)="openFirstModal()">Open First Modal</button>
+
+<app-modal-outlet></app-modal-outlet>
