@@ -1,5 +1,4 @@
 import { DOCUMENT } from '@angular/common';
-import { v4 as uuid } from 'uuid';
 import {
   Directive,
   Inject,
@@ -19,7 +18,7 @@ export class PortalToDirective implements OnInit, OnDestroy {
   private host: Element;
   private portalIds = [];
 
-  constructor (
+  constructor(
     private tpl: TemplateRef<any>,
     private vcr: ViewContainerRef,
     @Inject(DOCUMENT) private document: Document
@@ -30,7 +29,7 @@ export class PortalToDirective implements OnInit, OnDestroy {
     this.host = this.document.querySelector(this.portalTo);
 
     viewRef.rootNodes.forEach((node: HTMLElement) => {
-      const portalId = uuid();
+      const portalId = new Date().getTime() + '';
       node.setAttribute('portal-id', portalId);
       this.portalIds.push(portalId);
       this.host.appendChild(node);
